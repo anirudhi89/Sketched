@@ -16,3 +16,5 @@ Start by creating a branch from main/master, with the title as your name. After 
 * Aakash Arvapalli
 * Aidan Barr Bono
 * Ethan Rubenstein
+
+# Ethan's Git Push Succeeded
