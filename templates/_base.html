@@ -6,8 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
     <link rel="shortcut icon" href="" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="../style/style.css">
 </head>
 <body>
+    <div id="mobile-navbar-wrapper">
+        <nav id="mobile-navbar">
+            <input type="checkbox" id="mobile-nav-checkbox" class="mobile--nav--checkbox">
+            <label for="mobile-nav-checkbox" class="mobile-nav-toggle">
+              <img src="../style/svg/menu-icon.svg" class="menu-icon" viewBox="0 0 448 512" width="100" title="bars">
+              <img src="../style/svg/close-icon.svg" class="close-icon" viewbox="0 0 384 512" width="100" title="times">
+            </label>
+            <ul id="mobile-nav-menu">
+              <li class="logo"> <a href="index.html"> <img class="logo-simple" src="../style/img/PLACEHOLDER_LOGO.PNG" alt="PLACEHOLDER_LOGO"> </a> </li>
+              <li><a href="draw.html"><b>Draw</b></a></li>
+              <li><a href="search.html"><b>Search</b></a></li>
+              <li><a href="about.html"><b>About</b></a></li>
+              <li><a href="contact.html"><b>Contact</b></a></li>
+          </ul>
+        </nav>
+      </div>
+          <div class="navbar-wrapper">
+              <nav id="navbar">
+                  <div class="container">
+                      <ul id="navbar-list">
+                          <li class="logo"> <a href="index.html"> <img class="logo-simple" src="../style/img/PLACEHOLDER_MOBILE_LOGO.PNG" alt="PLACEHOLDER_MOBILE_LOGO"> </a> </li>
+                          <li><a href="contact.html"><b>&nbspContact&nbsp</b></a></li>
+                          <li><a href="about.html"><b>&nbspAbout&nbsp</b></a></li>
+                          <li><a href="search.html"><b>&nbspSearch&nbsp</b></a></li>
+                          <li><a href="draw.html"><b>&nbspDraw&nbsp</b></a></li>
+                  </div>
+              </nav>
+          </div>
+  
     {% block content %}{% endblock %}
 </body>
 </html>
