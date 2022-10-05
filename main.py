@@ -10,22 +10,6 @@ app = flask.Flask(__name__)
 def root():
     return flask.render_template("index.html", page_title='Home')
 
-@app.route('/draw.html')
-@app.route('/draw')
-def draw():
-    return flask.render_template("draw.html", page_title='Draw')
-
-@app.route('/search.html')
-@app.route('/search')
-def search():
-    return flask.render_template("search.html", page_title='Search')
-
-@app.route('/about.html')
-@app.route('/about')
-def search():
-    return flask.render_template("about.html", page_title='About')
-
-@app.route('/contact.html')
-@app.route('/contact')
-def search():
-    return flask.render_template("contact.html", page_title='Contact')
+@app.route('/p/<requested_page>')
+def templater(requested_page):
+    return flask.render_template(requested_page)
