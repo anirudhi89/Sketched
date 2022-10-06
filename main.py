@@ -8,7 +8,7 @@ app = flask.Flask(__name__)
 @app.route('/index.html')
 @app.route('/index')
 def root():
-    return flask.render_template("index.html", page_title='Home')
+    return flask.render_template("index.html", page_title='Sketched | Home')
 
 @app.route('/p/<requested_page>')
 def templater(requested_page):
