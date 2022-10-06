@@ -2,7 +2,58 @@
 {% block title %}Sketched | Draw {% endblock %}
 
 {% block content %}
-<canvas id="canvas"></canvas>
+<div>
+    <input type="color" name="pencolor=" id="pencolor">
+    <label for="pencolor">Choose a Color</label>
+</div>
+<canvas id = "canvas">
+</canvas>
+
 <!-- Replace script below -->
-<script src="PLACEHOLDER_DRAWING_SCRIPT.js"></script>
-{% endblock %}
+<script>
+    //color chooser
+    const pencolor = document.getElementById('pencolor');
+    var color;
+    pencolor.addEventListener('input', (event) => {
+        color = pencolor.value;
+    });
+
+    const canvas = document.getElementById("canvas");
+    const context = canvas.getContext("2d");
+    let coord = { x: 0, y: 0 };
+
+    document.addEventListener("mousedown", start());
+    document.addEventListener("mouseup", stop());
+    window.addEventListener("resize", resize());
+
+    resize();
+
+    function resize() {
+        context.canvas.width = window.innerWidth;
+        context.canvas.height = window.innerHeight;
+    }
+    function reposition(event) {
+        coord.x = event.clientX - canvas.offsetLeft;
+        coord.y = event.clientY - canvas.offsetTop;
+    }
+    function start(event) {
+        document.addEventListener("mousemove", draw);
+        reposition(event);
+    }
+    function stop() {
+        document.removeEventListener("mousemove", draw);
+    }
+    function draw(event) {
+        context.beginPath();
+        context.lineWidth = 5;
+        context.lineCap = "round";
+        context.strokeStyle = color;
+        context.moveTo(coord.x, coord.y);
+        reposition(event);
+        context.lineTo(coord.x, coord.y);
+        context.stroke();
+    }
+</script>
+{% end block %}
+
+<!-- <script src="PLACEHOLDER_DRAWING_SCRIPT.js"></script> -->
