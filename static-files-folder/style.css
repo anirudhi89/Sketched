@@ -1,0 +1,350 @@
+* {
+	margin: 0;
+	padding: 0;
+	color: #000
+}
+
+body,
+html {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	overflow-x: hidden;
+	font-family: serif, sans-serif;
+}
+
+#animated-background {
+	backdrop-filter: blur(1px);
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: url("img/background.png");
+	background-repeat: repeat;
+	background-position: 0 0;
+	background-size: auto 35%;
+	animation: animatedBackground 200000s linear infinite forwards;
+}
+
+@keyframes animatedBackground {
+	from {
+		background-position: 0;
+	}
+
+	to {
+		background-position: -10000000px -10000000px;
+	}
+}
+
+@font-face {
+	font-family: poppins;
+	src: url(Poppins-Medium.ttf);
+	font-style: normal;
+	font-weight: 100
+}
+
+body {
+	font-family: poppins;
+	font-size: 16px;
+	line-height: 1.6em;
+	height: 100vh;
+}
+
+.nav-container {
+	width: 100%;
+}
+
+#navbar {
+	display: none;
+	padding-top: 5vh;
+	overflow: visible;
+	padding-right: 5%
+}
+
+#navbar ul {
+	list-style: none
+}
+
+#navbar a {
+	color: #fff;
+	text-decoration: none;
+	font-size: 1.3em
+}
+
+.nav-container a:after {
+	content: '';
+	display: block;
+	width: 0;
+	height: 4px;
+	transition: width .25s;
+	background: #f89c24
+}
+
+.nav-container a:hover:after {
+	width: 100%;
+	transition: width .25s
+}
+
+.nav-container li {
+	float: right;
+	text-align: center;
+	margin-left: 4vw;
+	line-height: 1.6em
+}
+
+@media screen and (max-width:767px) {
+
+	#logo {
+		margin-left: auto;
+		margin-right: auto;
+		display: block;
+		width: 60vw;
+		max-width: 50%;
+		height: auto
+	}
+
+	.logo-simple {
+		width: 15vw
+	}
+
+
+}
+
+@media only screen and (min-width:768px) {
+
+	#mobile-navbar-wrapper {
+		display: none
+	}
+
+	#navbar {
+		display: flex
+	}
+
+	.logo-simple {
+		width: 5vw
+	}
+}
+
+.logo-simple {
+	display: inline-block;
+	margin-bottom: 0;
+}
+
+*,
+:after,
+:before {
+	box-sizing: inherit
+}
+
+.mobile-nav-toggle {
+	cursor: pointer;
+	margin: 0 1rem;
+	float: right
+}
+
+#mobile-navbar img {
+	width: 1.9rem
+}
+
+#mobile-navbar .logo-simple {
+	width: 3rem
+}
+
+.close-icon {
+	display: none
+}
+
+.menu-icon {
+	margin-top: .2rem
+}
+
+.mobile--nav--checkbox {
+	display: none
+}
+
+#mobile-nav-menu {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	align-items: center;
+	margin: 1rem
+}
+
+#mobile-nav-menu li {
+	list-style: none;
+	display: none
+}
+
+#mobile-nav-menu a {
+	text-decoration: none;
+	font-size: 1.2rem
+}
+
+.mobile--nav--checkbox:checked~#mobile-nav-menu li {
+	display: block
+}
+
+.mobile--nav--checkbox:checked~label.mobile-nav-toggle .close-icon {
+	display: block
+}
+
+.mobile--nav--checkbox:checked~label.mobile-nav-toggle .menu-icon {
+	display: none
+}
+
+#navbar-list li:first-child {
+	float: left
+}
+
+#navbar-list li:first-child {
+	float: left
+}
+
+.nav-container .logo a:after {
+	width: 0
+}
+
+#mobile-nav-menu li:first-child {
+	margin-right: auto;
+	display: block
+}
+
+#mobile-navbar-wrapper {
+	padding-top: 1vh;
+	padding-bottom: 1vh
+}
+
+#contact {
+	text-decoration: none;
+	color: #f89c24
+}
+
+.footer {
+	text-align: center;
+	margin-top: auto;
+	font-size: .8rem;
+	margin-bottom: 0;
+}
+
+.flex-wrapper {
+	display: flex;
+	min-height: 84vh;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+/* ============================== INDEX ============================== */
+#get-started-box {
+	display: flex;
+	padding-top: 2vh;
+	justify-content: center;
+	align-items: center;
+	padding-bottom: 12%;
+}
+
+#get-started {
+	margin-top: 25%;
+	margin-left: auto;
+	margin-right: auto;
+	display: inline-block;
+	padding: 0.5em 1.2em;
+	margin: 0 0.3em 0.3em 0;
+	border-radius: 2em;
+	box-sizing: border-box;
+	text-decoration: none;
+	font-weight: 300;
+	background-color: #ffae44;
+	text-align: center;
+	transition: all 0.2s;
+
+}
+
+#get-started:hover {
+	transform: scale(1.15);
+	transition: transform .2s;
+	background-color: #f89c24;
+}
+
+@media screen and (max-width:767px) {
+	#learn-more {
+		display: block;
+		margin: 0.2em auto;
+	}
+
+	.index-logo {
+		display: block;
+		width: 85vw;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+}
+
+@media only screen and (min-width:768px) {
+	.index-logo {
+		width: 50vw
+	}
+}
+
+.index-logo {
+	display: block;
+	padding-top: 5vh;
+	margin-left: auto;
+	margin-right: auto;
+	padding-bottom: 4vh;
+}
+
+/*============================================================*/
+/* ============================== DRAW ============================== */
+#canvas {
+	width: 75vw;
+	height: 75vh;
+	border: 2px solid black;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/*============================================================*/
+/* ============================== ABOUT ============================== */
+#about-head {
+	text-align: center;
+	font-size: 4rem;
+	padding-top: 5vh;
+	padding-bottom: 5vh;
+
+}
+
+@media only screen and (max-width: 797px) {
+	#about-head {
+		font-size: 40px;
+	}
+}
+
+#about-1 {
+	text-align: center;
+	width: 100%;
+
+}
+
+.about-wrapper {
+	width: 100%;
+}
+
+#about-1 img {
+	max-width: 100%;
+	height: auto;
+}
+
+#about-2 {
+	text-align: center;
+	padding: 1vh 1vw 1vh 1vw;
+	margin: 5vh 10vw 3vh 10vw;
+	font-size: 1.5em;
+	background-color: rgba(255, 255, 255, 0.623);
+	border-radius: 14px;
+	box-shadow: 1px 1px 9px 2px rgba(0, 0, 0, 0.49);
+}
+
+/*============================================================*/
