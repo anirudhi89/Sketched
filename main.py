@@ -12,7 +12,7 @@ app = flask.Flask(__name__)
 def root():
     return flask.render_template("index.html", page_title='Sketched | Home')
 
-@app.route('/upload/confirm')
+@app.route('/upload/confirm', methods = "POST")
 def upload_confirmation():
     return "Upload Received"
 
