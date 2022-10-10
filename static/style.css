@@ -8,6 +8,15 @@ canvas {
 	background-color: #FFFF88;
 }
 
+#temp {
+	margin: auto;
+	width: 50%;
+	font-size: larger;
+	border: 3px solid green;
+	padding: 10px;
+	text-align: center;
+}
+
 body,
 html {
 	width: 100%;
