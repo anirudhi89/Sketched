@@ -4,6 +4,10 @@
 	color: #000
 }
 
+canvas {
+	background-color: #FFFF88;
+}
+
 body,
 html {
 	width: 100%;
