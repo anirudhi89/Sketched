@@ -1,5 +1,6 @@
 from crypt import methods
 import flask
+from flask import request
 
 app = flask.Flask(__name__)
 
@@ -19,3 +20,7 @@ def upload_confirmation():
 @app.route('/p/<requested_page>')
 def templater(requested_page):
     return flask.render_template(requested_page)
+
+@app.route('/submit/confirm')
+def submit_confirm():
+    return request.files

@@ -55,7 +55,12 @@ var submit = document.getElementById('submitbutton');
 
 submit.addEventListener('click', (e) => {
     let sketchurl = storeSketchAsImage();
-    
+    fetch('/submit/confirm',  {
+        method: 'POST', 
+        headers: {'Content-Type':'multipart/form-data'},
+        body: sketchurl
+    })
+      .then((response) => response.json())
 });
 
 
