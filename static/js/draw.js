@@ -61,7 +61,7 @@ if (submit) {
             headers: {'Content-Type':'multipart/form-data'},
             body: sketchurl
         })
-          .then((response) => response.json())
+          .then((response) => console.log(response))
     });
 }
 
