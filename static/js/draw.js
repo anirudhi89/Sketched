@@ -53,15 +53,18 @@ function draw(event) {
 
 var submit = document.getElementById('submitbutton');
 
-submit.addEventListener('click', (e) => {
-    let sketchurl = storeSketchAsImage();
-    fetch('/submit/confirm',  {
-        method: 'POST', 
-        headers: {'Content-Type':'multipart/form-data'},
-        body: sketchurl
-    })
-      .then((response) => response.json())
-});
+if (submit) {
+    submit.addEventListener('click', e => {
+        let sketchurl = storeSketchAsImage();
+        fetch('/submit/confirm',  {
+            method: 'POST', 
+            headers: {'Content-Type':'multipart/form-data'},
+            body: sketchurl
+        })
+          .then((response) => response.json())
+    });
+}
+
 
 
 function storeSketchAsImage() {
