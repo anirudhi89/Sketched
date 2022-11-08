@@ -9,51 +9,12 @@
 <canvas id = "canvas">
 </canvas>
 
+<script src="../static/js/draw.js"></script>
+
 <!-- Replace script below -->
-<script>
-    //color chooser
-    const pencolor = document.getElementById('pencolor');
-    var color;
-    pencolor.addEventListener('input', (event) => {
-        color = pencolor.value;
-    });
 
-    const canvas = document.getElementById("canvas");
-    const context = canvas.getContext("2d");
-    let coord = { x: 0, y: 0 };
+<button id="submitbutton">Save to DB</button>
 
-    document.addEventListener("mousedown", start);
-    document.addEventListener("mouseup", stop);
-    window.addEventListener("resize", resize);
-
-    resize();
-
-    function resize() {
-        context.canvas.width = window.innerWidth;
-        context.canvas.height = window.innerHeight;
-    }
-    function reposition(event) {
-        coord.x = event.clientX - canvas.offsetLeft;
-        coord.y = event.clientY - canvas.offsetTop;
-    }
-    function start(event) {
-        document.addEventListener("mousemove", draw);
-        reposition(event);
-    }
-    function stop() {
-        document.removeEventListener("mousemove", draw);
-    }
-    function draw(event) {
-        context.beginPath();
-        context.lineWidth = 5;
-        context.lineCap = "round";
-        context.strokeStyle = color;
-        context.moveTo(coord.x, coord.y);
-        reposition(event);
-        context.lineTo(coord.x, coord.y);
-        context.stroke();
-    }
-</script>
 {% endblock %}
 
 <!-- <script src="PLACEHOLDER_DRAWING_SCRIPT.js"></script> -->
