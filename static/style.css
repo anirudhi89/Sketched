@@ -311,13 +311,68 @@ body {
 /*============================================================*/
 /* ============================== DRAW ============================== */
 #canvas {
-	width: 75vw;
-	height: 75vh;
-	border: 2px solid black;
-	margin-left: auto;
-	margin-right: auto;
+    padding: 0;
+    margin: 0;
+    overflow:hidden;
+}
+#paintArea {
+    height: 60vh;
+    width: 80%;
+    margin-left:auto;
+    margin-right:auto;
+    border:  8px solid black;
+    margin-top: 2%;
+    overflow:hidden;
+  }
+#pen-label{
+    display:flex;
+    flex-direction:column;
+    margin-left:2%;
+}
+#pencolor{
+    background-color:transparent;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    border:none;
+    cursor:pointer;
+    appearance:none;
+    width:50px;
+    height:50px;
+    display:flex;
+    flex-direction:column;
+    margin-left:2%;
+}
+#pencolor::-webkit-color-swatch{
+    border-radius:15px;
+    border:none;
+}
+#pencolor::-moz-color-swatch{
+    border-radius:15px;
+    border:none;
+}
+#save-button-box{
+	display: flex;
+	padding-top: 2vh;
+    margin-left:1%;
 }
 
+#save-button {
+	margin-top: 25%;
+	display: inline-block;
+	padding: 0.5em 1.2em;
+	margin: 0 0.3em 0.3em 0;
+	border-radius: 2em;
+	box-sizing: border-box;
+	text-decoration: none;
+	font-weight: 300;
+	background-color: #ffae44;
+	text-align: center;
+	transition: all 0.2s;
+}
+
+#save-button:hover {
+	background-color: #f89c24;
+}
 /*============================================================*/
 /* ============================== ABOUT ============================== */
 #about-head {

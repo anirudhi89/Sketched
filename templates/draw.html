@@ -2,12 +2,25 @@
 {% block title %}Sketched | Draw {% endblock %}
 
 {% block content %}
-<div>
-    <input type="color" name="pencolor=" id="pencolor">
-    <label for="pencolor">Choose a Color</label>
-</div>
-<canvas id = "canvas">
+
+<div id="paintArea" scroll="no">
+<canvas id = "canvas" scroll="no">
 </canvas>
+</div>
+
+<script> document.getElementById('save-button').onclick = function () {
+    
+  };
+</script>
+
+<div>
+    <label for="pencolor" id="pen-label"><b>Color Selector</b></label>
+    <input type="color" name="pencolor=" id="pencolor">
+</div>
+<div id="save-button-box"> 
+    <button type="button" id="save-button"><b>Save Drawing</b></a>
+</div>
+
 
 <!-- Replace script below -->
 <script>
@@ -20,7 +33,7 @@
 
     const canvas = document.getElementById("canvas");
     const context = canvas.getContext("2d");
-    let coord = { x: 0, y: 0 };
+    let coord = { x: 200, y: 200 };
 
     document.addEventListener("mousedown", start);
     document.addEventListener("mouseup", stop);
