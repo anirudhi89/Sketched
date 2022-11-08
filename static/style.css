@@ -321,6 +321,8 @@ body {
     margin-left:auto;
     margin-right:auto;
     border:  8px solid black;
+	border-radius: 8px;
+
     margin-top: 2%;
     overflow:hidden;
   }
