@@ -358,7 +358,7 @@ body {
     margin-left:1%;
 }
 
-#save-button {
+#submitbutton {
 	margin-top: 25%;
 	display: inline-block;
 	padding: 0.5em 1.2em;
@@ -372,7 +372,7 @@ body {
 	transition: all 0.2s;
 }
 
-#save-button:hover {
+#submitbutton:hover {
 	background-color: #f89c24;
 }
 /*============================================================*/
