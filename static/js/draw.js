@@ -68,12 +68,12 @@ async function storeSketchAsImage() {
     var urlCreator = window.URL || window.webkitURL;
     var imageUrl = urlCreator.createObjectURL(imageBlob);
     document.querySelector("#image").src = imageUrl;
-    console.log(imageUrl)
     return imageUrl;
 }
 if (submit) {
     submit.addEventListener('click', async e => {
-        let sketchurl = await storeSketchAsImage();
+        let sketchurl = await storeSketchAsImage()
+        console.log(sketchurl);
         const params = {
             url: sketchurl
         }
