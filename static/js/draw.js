@@ -14,10 +14,18 @@ document.addEventListener("mouseup", stop);
 window.addEventListener("resize", resize);
 
 resize();
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+ctx.rect(0, 0, canvas.width, canvas.height);
+ctx.fillStyle = "rgb(255,255,136)";
+ctx.fill();
 
 function resize() {
     context.canvas.width = window.innerWidth;
     context.canvas.height = window.innerHeight;
+    ctx.rect(0, 0, context.canvas.width, context.canvas.height);
+    ctx.fillStyle = "rgb(255,255,136)";
+    ctx.fill();
 }
 function reposition(event) {
     coord.x = event.clientX - canvas.offsetLeft;
@@ -53,6 +61,15 @@ function draw(event) {
 
 var submit = document.getElementById('submitbutton');
 
+async function storeSketchAsImage() {
+    let imageBlob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+    let formData = new FormData();
+    formData.append("image", imageBlob, "image.png");
+    var urlCreator = window.URL || window.webkitURL;
+    var imageUrl = urlCreator.createObjectURL(imageBlob);
+    document.querySelector("#image").src = imageUrl;
+    return imageUrl;
+}
 if (submit) {
     submit.addEventListener('click', e => {
         let sketchurl = storeSketchAsImage();
@@ -67,6 +84,3 @@ if (submit) {
 
 
 
-function storeSketchAsImage() {
-    return canvasUrl = canvas.toDataURL("image/jpeg");
-}
