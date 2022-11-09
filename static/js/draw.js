@@ -85,7 +85,7 @@ if (submit) {
             // console.log(response.type);
             var message = response;
             console.log(message);
-            window.location = "/submit/redirConfirm?"+message;
+            window.location = "/submit/redirConfirm"+message;
           })
     });
 }

@@ -28,10 +28,9 @@ def submit_confirm():
     else:
         return "error"
     
-@app.route('/submit/redirConfirm', methods=["GET"])
-def submit_confirmation():
-    value = request.args.get('values')
-    return flask.render_template("confirm.html", values = value)
+@app.route('/submit/redirConfirm<message>', methods=["GET"])
+def submit_confirmation(message):
+    return flask.render_template("confirm.html", value = message)
 
 
 if __name__ == '__main__':
