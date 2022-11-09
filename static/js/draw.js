@@ -116,7 +116,7 @@ if (submit) {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(params)
         })
-          .then((response) => response.text)
+          .then((response) => response.text())
           .then((response) => {
             // console.log(response.type);
             // if (typeof(response) === 'object' && response !== null) {
