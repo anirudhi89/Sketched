@@ -23,7 +23,9 @@ def templater(requested_page):
 
 @app.route('/submit/confirm', methods=['POST'])
 def submit_confirm():
-    if request.args.get('url'):
+    request_json = request.get_json()
+    url = request_json.get('url')
+    if url:
         return "success"
     else:
         return "error"
