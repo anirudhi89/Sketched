@@ -23,4 +23,4 @@ def templater(requested_page):
 
 @app.route('/submit/confirm')
 def submit_confirm():
-    return request.files
+    return request.form['name']
