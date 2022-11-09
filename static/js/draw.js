@@ -82,7 +82,7 @@ if (submit) {
             headers: {'Content-Type':'application/json'},
             body: JSON.stringify(params)
         })
-          .then((response) => console.log(response))
+          .then((response) => window.location = response)
     });
 }
 
