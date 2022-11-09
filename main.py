@@ -23,7 +23,7 @@ def templater(requested_page):
 
 @app.route('/submit/confirm', methods=['POST'])
 def submit_confirm():
-    request_json = request.get_json
+    request_json = request.get_json(force=True)
     url = request_json.get("url")
     if url != None:
         return "success"
