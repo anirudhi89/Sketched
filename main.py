@@ -25,7 +25,7 @@ def templater(requested_page):
 def submit_confirm():
     return json.loads({'values': request.args.get('url')})
     
-@app.route('/submit/confirm')
+@app.route('/submit/redirConfirm')
 def submit_confirmation():
     value = request.args.get('values')
     return flask.render_template("confirm.html", values = value)
