@@ -78,7 +78,7 @@ if (submit) {
         }
         fetch('/submit/confirm',  {
             method: 'POST', 
-            headers: {'Content-Type':'multipart/form-data'},
+            headers: {'Content-Type':'application/json'},
             body: JSON.stringify(params)
         })
           .then((response) => console.log(response))
