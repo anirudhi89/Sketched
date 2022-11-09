@@ -22,4 +22,4 @@ def templater(requested_page):
 
 @app.route('/submit/confirm', methods=['POST'])
 def submit_confirm():
-    return flask.render_template("confirm.html", value = request.files['body'])
+    return flask.render_template("confirm.html", value = request.args.get['body'])
