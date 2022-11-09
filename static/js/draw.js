@@ -111,6 +111,7 @@ if (submit) {
         const params = {
             url: sketchurl
         }
+        console.log(sketchurl);
         fetch('/submit/confirm',  {
             method: 'POST', 
             headers: {'Content-Type': 'application/json'},
@@ -121,6 +122,9 @@ if (submit) {
             var message = response;
             console.log(message);
             window.location = "/submit/redirConfirm"+message;
+          })
+          .catch(e => {
+            console.log(e);
           })
     });
 }
