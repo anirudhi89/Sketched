@@ -82,7 +82,7 @@ if (submit) {
             body: JSON.stringify(params)
         })
           .then((response) =>response)
-          .then(() => {
+          .then((response) => {
             var response = JSON.parse(response);
             var message = response["values"]; 
             window.location.href = "/submit/confirm="+message;
