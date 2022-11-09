@@ -23,7 +23,7 @@ def templater(requested_page):
 
 @app.route('/submit/confirm', methods=['POST'])
 def submit_confirm():
-    return json.dumps({'values': request.args.get('url')})
+    return jsonify({'values': request.args.get('url')})
     
 @app.route('/submit/confirm')
 def submit_confirmation():
