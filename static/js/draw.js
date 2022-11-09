@@ -16,16 +16,16 @@ window.addEventListener("resize", resize);
 resize();
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-ctx.rect(0, 0, canvas.width, canvas.height);
-ctx.fillStyle = "rgb(255,255,136)";
-ctx.fill();
+context.rect(0, 0, canvas.width, canvas.height);
+context.fillStyle = "rgb(255,255,136)";
+context.fill();
 
 function resize() {
     context.canvas.width = window.innerWidth;
     context.canvas.height = window.innerHeight;
-    ctx.rect(0, 0, context.canvas.width, context.canvas.height);
-    ctx.fillStyle = "rgb(255,255,136)";
-    ctx.fill();
+    context.rect(0, 0, context.canvas.width, context.canvas.height);
+    context.fillStyle = "rgb(255,255,136)";
+    context.fill();
 }
 function reposition(event) {
     coord.x = event.clientX - canvas.offsetLeft;
