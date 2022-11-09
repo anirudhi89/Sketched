@@ -1,4 +1,3 @@
-from crypt import methods
 import flask
 from flask import request
 
@@ -15,12 +14,12 @@ def root():
 
 @app.route('/upload/confirm', methods = ["POST"])
 def upload_confirmation():
-    return "Upload Received"
+    return flask.render_template("confirm.html", value = "Upload Received!")
 
 @app.route('/p/<requested_page>')
 def templater(requested_page):
     return flask.render_template(requested_page)
 
-@app.route('/submit/confirm')
+@app.route('/submit/confirm', methods=['POST'])
 def submit_confirm():
-    return request.form['name']
+    return flask.render_template("confirm.html", value = request.files['body'])
