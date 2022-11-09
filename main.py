@@ -23,7 +23,10 @@ def templater(requested_page):
 
 @app.route('/submit/confirm', methods=['POST'])
 def submit_confirm():
-    return json.dumps({'values': request.args.get('url')})
+    if request.args.get('url'):
+        return "success"
+    else:
+        return "error"
     
 @app.route('/submit/redirConfirm', methods=["GET"])
 def submit_confirmation():
