@@ -83,7 +83,7 @@ if (submit) {
         })
           .then((response) =>response)
           .then((response) => {
-            // var response = JSON.parse(response);
+            var response = JSON.stringify(response);
             console.log(response);
             var message = response["values"]; 
             console.log(message);
