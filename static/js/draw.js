@@ -86,6 +86,7 @@ if (submit) {
             // var response = JSON.parse(response);
             console.log(response);
             var message = response["values"]; 
+            console.log(message);
             window.location = "/submit/redirConfirm="+message;
           })
     });
