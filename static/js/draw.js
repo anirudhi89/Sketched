@@ -81,7 +81,12 @@ if (submit) {
             headers: {'Content-Type':'application/json'},
             body: JSON.stringify(params)
         })
-          .then((response) => window.location = response.url)
+          .then((response) =>response)
+          .then(() => {
+            var response = JSON.parse(response);
+            var message = response["values"]; 
+            window.location.href = "/submit/confirm="+message;
+          })
     });
 }
 

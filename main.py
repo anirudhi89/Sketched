@@ -1,5 +1,6 @@
 import flask
 from flask import request
+import json
 
 app = flask.Flask(__name__)
 
@@ -22,7 +23,12 @@ def templater(requested_page):
 
 @app.route('/submit/confirm', methods=['POST'])
 def submit_confirm():
-    return flask.render_template("confirm.html", value = request.args.get('url'))
+    return json.dumps({'values': request.args.get('url')})
+    
+@app.route('/submit/confirm')
+def submit_confirmation():
+    value = request.args.get('values')
+    return flask.render_template("confirm.html", values = value)
 
 
 if __name__ == '__main__':
