@@ -81,9 +81,9 @@ if (submit) {
             headers: {'Content-Type':'application/json'},
             body: JSON.stringify(params)
         })
-          .then((response) =>response)
           .then((response) => {
-            console.log(response);
+            console.log(response.type);
+            //response = JSON.parse(response)
             var message = response["values"]; 
             console.log(message);
             window.location = "/submit/redirConfirm?"+message;
