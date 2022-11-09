@@ -72,7 +72,8 @@ async function storeSketchAsImage() {
 }
 if (submit) {
     submit.addEventListener('click', e => {
-        let sketchurl = storeSketchAsImage();
+        var sketchurl;
+        storeSketchAsImage().then(response => sketchurl = response);
         const params = {
             url: sketchurl
         }
