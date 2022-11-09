@@ -115,10 +115,13 @@ if (submit) {
         fetch('/submit/confirm',  {
             method: 'POST', 
             headers: {'Content-Type': 'application/json'},
-            body: params
+            body: JSON.stringify(params)
         })
           .then((response) => {
             // console.log(response.type);
+            // if (typeof(response) === 'object' && response !== null) {
+            //     message = response.toString()
+            // }
             var message = response;
             console.log(message);
             window.location = "/submit/redirConfirm"+message;
