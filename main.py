@@ -1,5 +1,6 @@
-from crypt import methods
 import flask
+from flask import request
+import json
 
 app = flask.Flask(__name__)
 
@@ -14,8 +15,27 @@ def root():
 
 @app.route('/upload/confirm', methods = ["POST"])
 def upload_confirmation():
-    return "Upload Received"
+    return flask.render_template("confirm.html", value = "Upload Received!")
 
 @app.route('/p/<requested_page>')
 def templater(requested_page):
     return flask.render_template(requested_page)
+
+@app.route('/submit/confirm', methods=['POST'])
+def submit_confirm():
+    request_json = request.get_json(force=True)
+    url = request_json.get("url")
+    if url != None:
+        return "success"
+    else:
+        return "error"
+    
+@app.route('/submit/redirConfirm<message>', methods=["GET"])
+def submit_confirmation(message):
+    return flask.render_template("confirm.html", value = message)
+
+
+if __name__ == '__main__':
+    app.debug = True
+    app.run()
+    #JUST FOR DEBUGGING
