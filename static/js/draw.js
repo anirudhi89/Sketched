@@ -67,13 +67,12 @@ async function storeSketchAsImage() {
     formData.append("image", imageBlob, "image.png");
     var urlCreator = window.URL || window.webkitURL;
     var imageUrl = urlCreator.createObjectURL(imageBlob);
-    document.querySelector("#image").src = imageUrl;
+    // document.querySelector("#image").src = imageUrl;
     return imageUrl;
 }
 if (submit) {
     submit.addEventListener('click', async e => {
         let sketchurl = await storeSketchAsImage()
-        console.log(sketchurl);
         const params = {
             url: sketchurl
         }
@@ -82,7 +81,7 @@ if (submit) {
             headers: {'Content-Type':'application/json'},
             body: JSON.stringify(params)
         })
-          .then((response) => window.location = response)
+          .then((response) => window.location = response.url)
     });
 }
 
