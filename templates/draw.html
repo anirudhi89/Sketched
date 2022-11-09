@@ -4,23 +4,38 @@
 {% block content %}
 
 <div id="paintArea" scroll="no">
-<canvas id = "canvas" scroll="no">
-</canvas>
+    <canvas id="canvas" scroll="no">
+    </canvas>
 </div>
 
-<div>
-    <label for="pencolor" id="pen-label"><b>Color Selector</b></label>
-    <input type="color" name="pencolor=" id="pencolor">
-</div>
-<div id="save-button-box"> 
-    <form action="" enctype="multipart/form-data" method="post">
-        <button type="button" id="submitbutton"><b>Save Drawing</b></button>
-    </form>
-</div>
-<div>
-    <p>test image</p>
-    <img id= "image" src="" alt="">
-</div>
+
+
+<div class="toolbar">
+    <div class="tools" id="tools-section">
+      <div class="tools-row">
+        <div class="tools-wrapper">
+            <label for="pencolor" id="pen-label"><h5>Color Selector</h5></label>
+            <input type="color" name="pencolor=" id="pencolor">
+        </div>
+        <div class="tools-wrapper">
+            <h5>Background Color:</h5>
+            <input type="color" id="background-color" />
+        </div>
+        <div class="tools-wrapper">
+            <h5><span id="tool-type"></span> </h5>
+            <input type="range" id="pen-weight-slider" value="5" />
+        </div>
+      </div>
+      <div class="tools-row">
+        <button id="pen-button">Pen</button>
+        <button id="erase-button">Eraser</button>
+        <button id="clear-button">Clear</button>
+        <button id="erase-button">Save</button>
+      </div>
+    </div>
+  </div>
+
+
 
 
 <script src="../static/js/draw.js"></script>
