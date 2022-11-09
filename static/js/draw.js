@@ -68,6 +68,7 @@ async function storeSketchAsImage() {
     var urlCreator = window.URL || window.webkitURL;
     var imageUrl = urlCreator.createObjectURL(imageBlob);
     document.querySelector("#image").src = imageUrl;
+    console.log(imageUrl)
     return imageUrl;
 }
 if (submit) {
