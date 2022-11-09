@@ -73,10 +73,13 @@ async function storeSketchAsImage() {
 if (submit) {
     submit.addEventListener('click', e => {
         let sketchurl = storeSketchAsImage();
+        const params = {
+            url: sketchurl
+        }
         fetch('/submit/confirm',  {
             method: 'POST', 
             headers: {'Content-Type':'multipart/form-data'},
-            body: sketchurl
+            body: JSON.stringify(params)
         })
           .then((response) => console.log(response))
     });
