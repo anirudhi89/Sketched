@@ -12,6 +12,8 @@ let toolType = document.getElementById("tool-type");
 // default to pen
 toolType.innerHTML = "Pen Weight";
 
+
+var stickyNoteBg;
 var color;
 penColor.addEventListener('input', (event) => {
     color = penColor.value;
@@ -26,11 +28,19 @@ document.addEventListener("mouseup", stop);
 window.addEventListener("resize", resize);
 
 resize();
-backgroundButton.value = "#FFFF88";
+canvas.width = window.innerWidth; 
+canvas.height = window.innerHeight; 
+context.rect(0, 0, canvas.width, canvas.height); 
+context.fillStyle = stickyNoteBg || "rgb(255,255,136)"; 
+context.fill();
+// backgroundButton.value = "#FFFF88";
 
 function resize() {
-    context.canvas.width = window.innerWidth;
+    context.canvas.width = window.innerWidth; 
     context.canvas.height = window.innerHeight;
+    context.rect(0, 0, context.canvas.width, context.canvas.height); 
+    context.fillStyle = stickyNoteBg || "rgb(255,255,136)"; 
+    context.fill();
 }
 function reposition(event) {
     coord.x = event.clientX - canvas.offsetLeft;
@@ -61,7 +71,7 @@ function draw(event) {
 }
 // change background color
 backgroundButton.addEventListener("change", () => {
-    canvas.style.backgroundColor = backgroundButton.value;
+    stickyNoteBg = backgroundButton.value;
 });
 
 // clear canvas
@@ -92,18 +102,9 @@ penButton.addEventListener("click", () => {
     2. Make Fetch call
     3. Make route handler to store image
 */
-  
-var submit = document.getElementById('submitbutton');
 
-async function storeSketchAsImage() {
-    let imageBlob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
-    let formData = new FormData();
-    formData.append("image", imageBlob, "image.png");
-    var urlCreator = window.URL || window.webkitURL;
-    var imageUrl = urlCreator.createObjectURL(imageBlob);
-    // document.querySelector("#image").src = imageUrl;
-    return imageUrl;
-}
+var submit = document.getElementById('save-button');
+
 if (submit) {
     submit.addEventListener('click', async e => {
         let sketchurl = await storeSketchAsImage()
@@ -113,7 +114,7 @@ if (submit) {
         fetch('/submit/confirm',  {
             method: 'POST', 
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(params)
+            body: params
         })
           .then((response) => {
             // console.log(response.type);
@@ -122,4 +123,14 @@ if (submit) {
             window.location = "/submit/redirConfirm"+message;
           })
     });
+}
+
+async function storeSketchAsImage() {
+    let imageBlob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+    let formData = new FormData();
+    formData.append("image", imageBlob, "image.png");
+    var urlCreator = window.URL || window.webkitURL;
+    var imageUrl = urlCreator.createObjectURL(imageBlob);
+    // document.querySelector("#image").src = imageUrl;
+    return imageUrl;
 }
