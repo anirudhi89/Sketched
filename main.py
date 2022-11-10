@@ -2,12 +2,8 @@ import flask
 from flask import request
 import json
 import random
-from google.cloud import datastore, storage
 
 app = flask.Flask(__name__)
-
-client = datastore.Client(project='sketched')
-
 
 @app.route('/')
 @app.route('/index.html')
@@ -65,9 +61,9 @@ if __name__ == '__main__':
 
 #Helper Methods
 
-def get_from_ds(id):
-    kind = "Sticky Note"
-    name = 'sample stickyNote'
-    user = id
-    client.query(user=id)
+# def get_from_ds(id):
+#     kind = "Sticky Note"
+#     name = 'sample stickyNote'
+#     user = id
+#     client.query(user=id)
     
