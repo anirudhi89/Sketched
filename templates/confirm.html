@@ -4,6 +4,9 @@
 
 <div>
     {{ value }}
+    {% if link %}
+        <img src="{{ link }}">
+    {% endif %}
 </div>
 
 {% endblock %}

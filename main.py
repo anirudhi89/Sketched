@@ -2,7 +2,7 @@ import flask
 from flask import request
 import json
 import random
-from google.cloud import datastore
+from google.cloud import datastore, storage
 
 app = flask.Flask(__name__)
 
@@ -18,7 +18,14 @@ def root():
 
 @app.route('/upload/confirm', methods = ["POST"])
 def upload_confirmation():
-    return flask.render_template("confirm.html", value = "Upload Received!")
+    uploaded_file = flask.request.files.get('file')
+    content_type = uploaded_file.content_type
+    gcs_client = storage.Client()
+    storage_bucket = gcs_client.get_bucket('uploaded-stickies')
+    blob = storage_bucket.blob(uploaded_file.filename)
+    blob.upload_from_string(uploaded_file.read(), content_type=content_type)
+    url = blob.public_url
+    return flask.render_template("confirm.html", value = "Upload Received!", link = url)
 
 @app.route('/p/<requested_page>')
 def templater(requested_page):
