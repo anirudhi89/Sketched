@@ -51,9 +51,9 @@ def submit_confirmation(message):
 #     url = request_json.get("id")
     
 
-if __name__ == '__main__':
-    app.debug = True
-    app.run()
+# if __name__ == '__main__':
+#     app.debug = True
+#     app.run()
     #JUST FOR DEBUGGING
 
 
