@@ -13,7 +13,6 @@ client = datastore.Client(project='sketched')
 @app.route('/index.html')
 @app.route('/index')
 def root():
-    # verify_auth()
     return flask.render_template("index.html", page_title='Sketched | Home')
 
 @app.route('/upload/confirm', methods = ["POST"])
