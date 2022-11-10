@@ -77,7 +77,7 @@ backgroundButton.addEventListener("change", () => {
 // clear canvas
 clearButton.addEventListener("click", () => {
     context.clearRect(0, 0, canvas.width, canvas.height);
-    canvas.style.backgroundColor = backgroundButton.value;
+    canvas.style.backgroundColor =  stickyNoteBg || "rgb(255,255,136)";
 });
 
 // erase mode
