@@ -45,7 +45,7 @@ def submit_confirm():
 def submit_confirmation(message):
     return flask.render_template("confirm.html", value = message)
 
-@app.route('get/sketches')
+@app.route('/get/sketches')
 def get_sketches():
     request_json = request.get_json(force=True)
     url = request_json.get("id")
