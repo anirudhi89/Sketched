@@ -21,3 +21,17 @@
 //     body : JSON.parse(params)
 // })
 // .then((response) =>  response)
+
+// document.getElementById div that houses table
+// for i in range 4
+// .innerHTML += tableVar
+
+
+// var tableVar = 
+// ```
+// <tr>
+//    <td>
+//    img
+//    </td>
+// </tr>
+// ```
