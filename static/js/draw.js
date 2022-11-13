@@ -15,6 +15,13 @@ toolType.innerHTML = "Pen Weight";
 
 var stickyNoteBg;
 var color;
+//AUTHENTICATION
+//DEMO PURPOSES
+window.addEventListener('load', (e) => {
+    localStorage.setItem("tempID", 1014404);
+})
+
+
 penColor.addEventListener('input', (event) => {
     color = penColor.value;
 });
@@ -108,9 +115,20 @@ var submit = document.getElementById('save-button');
 if (submit) {
     submit.addEventListener('click', async e => {
         let sketchurl = await storeSketchAsImage()
-        const params = {
-            url: sketchurl
+        var userid = localStorage.getItem('tempID')
+        var params;
+        if (userid != null) {
+            params = {
+                id: userid,
+                url: sketchurl
+            }
         }
+        else {
+            params = {
+                url: sketchurl
+            }
+        }
+
         fetch('/submit/confirm',  {
             method: 'POST', 
             headers: {'Content-Type': 'application/json'},

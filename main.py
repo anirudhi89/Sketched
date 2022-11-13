@@ -1,9 +1,14 @@
 import flask
 from flask import request
-import json
-import random
+# from google.cloud import datastore
 
 app = flask.Flask(__name__)
+
+#Constants:
+
+#Datastore Constants:
+ENTITY_TYPE = 'StickyNote'
+
 
 @app.route('/')
 @app.route('/index.html')
@@ -61,9 +66,31 @@ def submit_confirmation(message):
 
 #Helper Methods
 
-# def get_from_ds(id):
-#     kind = "Sticky Note"
-#     name = 'sample stickyNote'
-#     user = id
-#     client.query(user=id)
+def get_client():
+    return datastore.Client()
+
+def retrieve_item(id):
+    client = get_client()
+    key = client.key(ENTITY_TYPE, int(id))
+    return client.get(key)
+
+def update_item(item):
+    client = get_client()
+    client.put(item)
+
+def delete_item(id):
+    client = get_client()
+    key = client.key(ENTITY_TYPE, int(id))
+    client.delete(key)
+
+def get_things():
+    result = []
+    client = get_client()
+    query = client.query(kind=ENTITY_TYPE)
+    for entity in query.fetch():
+        result.append(entity)
+    return result
+
+
+
     
