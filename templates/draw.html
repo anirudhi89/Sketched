@@ -4,6 +4,7 @@
 {% block content %}
 
 <div id="paintArea" scroll="no">
+    <div class='mouse' id="mouse"></div>
     <canvas id="canvas" scroll="no">
     </canvas>
 </div>
@@ -25,6 +26,10 @@
             <h5><span id="tool-type"></span> </h5>
             <input type="range" id="pen-weight-slider" value="5" />
         </div>
+        <div class="tools-wrapper">
+            <h5 id= "tag-list">Tags:</h5>
+            <input type="form" id="tag-form" placeholder="Add a tag (max 3)" maxlength="16"/>
+        </div>
       </div>
       <div class="tools-row">
         <button id="pen-button">Pen</button>
@@ -34,9 +39,6 @@
       </div>
     </div>
   </div>
-
-
-
 
 <script src="../static/js/draw.js"></script>
 <script src="https://unpkg.com/biri/dist/biri.min.js"></script> <!-- Only used for Creating IDs -->

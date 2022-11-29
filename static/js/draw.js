@@ -12,7 +12,7 @@ let toolType = document.getElementById("tool-type");
 // default to pen
 toolType.innerHTML = "Pen Weight";
 
-
+var tagList = [];
 var stickyNoteBg;
 var color;
 //AUTHENTICATION
@@ -85,6 +85,12 @@ backgroundButton.addEventListener("change", () => {
 clearButton.addEventListener("click", () => {
     context.clearRect(0, 0, canvas.width, canvas.height);
     canvas.style.backgroundColor =  stickyNoteBg || "rgb(255,255,136)";
+    tagList = [];
+    document.getElementById('tag-form').value = "";
+    document.getElementById('tag-list').innerHTML = "Tags:";
+    document.getElementById('tag-form').placeholder = "Add a tag (max 3)";
+
+    document.getElementById('tag-form').readOnly = false;
 });
 
 // erase mode
@@ -99,7 +105,37 @@ penButton.addEventListener("click", () => {
     toolType.innerHTML = "Pen Weight";
     eraseMode = false;
 });
-///// *TODO*: Make cursor equal to penWeight when hovering over canvas so that you can see how big the weight is without drawing (circle around cursor)
+
+// Add a tag to the list of tags when user presses enter key within tag form
+document.getElementById('tag-form').onkeydown = function(e){
+    if(tagList.length >= 3)
+        return;
+    if(e.keyCode == 13){
+      tagList.push(document.getElementById('tag-form').value);
+     // console.log(tagList);
+      document.getElementById('tag-form').value = "";
+      // lists the tags with a comma and a space next to Tags:
+      const showListAsString = tagList.join(', ');
+      document.getElementById('tag-list').innerHTML = "Tags: " + showListAsString + " ";
+      // Limit user to adding 3 tags
+      if(tagList.length >= 3){
+        document.getElementById('tag-form').readOnly = true;
+        document.getElementById('tag-form').placeholder = "Tag limit reached";
+    }
+    }
+ };
+
+// circle follows cursor
+const mouse = document.getElementById("mouse");
+document.getElementById("canvas").addEventListener("mousemove", function(e) {
+    mouse.style.left = e.clientX + "px",
+    mouse.style.top = e.clientY + "px";
+    mouse.style.height = context.lineWidth + "px";
+    mouse.style.width =  context.lineWidth + "px";
+    mouse.style.background =  penColor.value;
+});
+
+
 
 //Submit sketch
 
