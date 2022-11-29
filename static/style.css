@@ -343,6 +343,25 @@ body {
     flex-direction:column;
     margin-left:2%;
 }
+.mouse {
+    pointer-events: none;
+    position: fixed;
+    border-radius: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    left: -100px;
+    top: 50%;
+    background-color: black;
+    z-index: 10000;
+  }
+#tag-form{
+    height:35px;
+    font-family:poppins;
+    font-weight:bold;
+    padding: 5px;
+    background-color:rgb(221, 188, 103);
+    border:4px black solid;
+    border-radius:15px;
+}
 #pencolor::-webkit-color-swatch, #background-color::-webkit-color-swatch{
     border-radius:15px;
     border:4px black solid;
