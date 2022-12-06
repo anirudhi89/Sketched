@@ -15,11 +15,6 @@ toolType.innerHTML = "Pen Weight";
 var tagList = [];
 var stickyNoteBg;
 var color;
-//AUTHENTICATION
-//DEMO PURPOSES
-window.addEventListener('load', (e) => {
-    localStorage.setItem("tempID", 1014404);
-})
 
 
 penColor.addEventListener('input', (event) => {
@@ -146,6 +141,17 @@ document.getElementById("canvas").addEventListener("mousemove", function(e) {
     3. Make route handler to store image
 */
 
+var uniqueId = 0;
+const output = async function() {
+    uniqueId = await biri();
+    console.log(uniqueId);
+}
+//AUTHENTICATION
+//DEMO PURPOSES
+window.addEventListener('load', (e) => {
+    localStorage.setItem("tempID", uniqueId);
+})
+
 var submit = document.getElementById('save-button');
 
 if (submit) {
@@ -156,12 +162,14 @@ if (submit) {
         if (userid != null) {
             params = {
                 id: userid,
-                url: sketchurl
+                url: sketchurl,
+                tags: tagList
             }
         }
         else {
             params = {
-                url: sketchurl
+                url: sketchurl,
+                tags: tagList
             }
         }
 

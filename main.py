@@ -35,6 +35,10 @@ def templater(requested_page):
 def submit_confirm():
     request_json = request.get_json(force=True)
     url = request_json.get("url")
+    tags = request_json.get("tags")
+    if (tags != null):
+        str1 = " "
+        str1 = (str1.join(tags))
     if url != None:
         # kind = "StickyNote"
         # name = "sticky"+ random.randint(0, 200)
@@ -42,7 +46,7 @@ def submit_confirm():
         # task = datastore.Entity(key=task_key)
         # task['url'] = url
         # datastore.put(task)
-        return "Success! Image Uploaded"
+        return "Success! Image Uploaded" + str1
     else:
         return "Error. Unable to upload image."
     
