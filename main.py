@@ -36,12 +36,9 @@ def submit_confirm():
     request_json = request.get_json(force=True)
     url = request_json.get("url")
     tags = request_json.get("tags")
-    tagList = []
     if (tags != None):
-        str1 = " "
-        str1 = (str1.join(tags))
-        str = "Success! Image Uploaded"
-        str += str1
+        str = "Success! Image Uploaded. Your image was tagged as:"
+        str += tags
     if url != None:
         # kind = "StickyNote"
         # name = "sticky"+ random.randint(0, 200)
