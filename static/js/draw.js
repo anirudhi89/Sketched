@@ -159,10 +159,10 @@ if (submit) {
         let sketchurl = await storeSketchAsImage()
         var userid = localStorage.getItem('tempID')
         var params;
-        var tagString;
+        var tagString = "";
         tagList.forEach((x, i) => {
             if (i === 0) {
-                tagString += `${x}`
+                tagString = `${x}`
             }
             else {
                 tagString += ` , ${x}`
