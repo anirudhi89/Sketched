@@ -37,7 +37,7 @@ def submit_confirm():
     url = request_json.get("url")
     tags = request_json.get("tags")
     tagList = []
-    if (tags != null):
+    if (tags != None):
         str1 = " "
         str1 = (str1.join(tags))
         str = "Success! Image Uploaded"
