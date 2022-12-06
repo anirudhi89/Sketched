@@ -36,9 +36,12 @@ def submit_confirm():
     request_json = request.get_json(force=True)
     url = request_json.get("url")
     tags = request_json.get("tags")
+    tagList = []
     if (tags != null):
         str1 = " "
         str1 = (str1.join(tags))
+        str = "Success! Image Uploaded"
+        str += str1
     if url != None:
         # kind = "StickyNote"
         # name = "sticky"+ random.randint(0, 200)
@@ -46,7 +49,7 @@ def submit_confirm():
         # task = datastore.Entity(key=task_key)
         # task['url'] = url
         # datastore.put(task)
-        return "Success! Image Uploaded" + str1
+        return str
     else:
         return "Error. Unable to upload image."
     

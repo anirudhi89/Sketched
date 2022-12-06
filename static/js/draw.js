@@ -159,11 +159,19 @@ if (submit) {
         let sketchurl = await storeSketchAsImage()
         var userid = localStorage.getItem('tempID')
         var params;
+        var tagString;
+        tagList.forEach((x, i) => {
+            if (i === 0) {
+              tagString += `array=${x}`;
+            } else {
+              tagString += `&array=${x}`;
+            }
+          });
         if (userid != null) {
             params = {
                 id: userid,
                 url: sketchurl,
-                tags: tagList
+                tags: tagString
             }
         }
         else {
