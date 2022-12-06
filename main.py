@@ -36,7 +36,7 @@ def submit_confirm():
     request_json = request.get_json(force=True)
     url = request_json.get("url")
     tags = request_json.get("tags")
-    tags = str(tags)
+    tags = tags.replace('undefined', '')
     str = "Success! Image Uploaded"
     if tags != None:
         str = "Success! Image Uploaded. Your image was tagged as: "
