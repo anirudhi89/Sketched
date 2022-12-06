@@ -36,8 +36,8 @@ def submit_confirm():
     request_json = request.get_json(force=True)
     url = request_json.get("url")
     tags = request_json.get("tags")
-    if (tags != None):
-        str = "Success! Image Uploaded. Your image was tagged as:"
+    if tags != None:
+        str = "Success! Image Uploaded. Your image was tagged as: "
         str += tags
     if url != None:
         # kind = "StickyNote"

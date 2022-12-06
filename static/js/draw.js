@@ -162,9 +162,10 @@ if (submit) {
         var tagString;
         tagList.forEach((x, i) => {
             if (i === 0) {
-              tagString += `${x}`;
-            } else {
-              tagString += `${x}`;
+                tagString += `${x}`
+            }
+            else {
+                tagString += ` , ${x}`
             }
           });
         if (userid != null) {
