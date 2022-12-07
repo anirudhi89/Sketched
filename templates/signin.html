@@ -1,0 +1,16 @@
+{% extends '_base.html' %}
+{% block title %}Sketched | Sign In {% endblock %}
+{% block content %}
+<h3>Sign In</h3>
+{% if error is not none %}
+    <p>{{ error }}</p>
+{% endif %}
+<form method="post" action="/login">
+    <p>Username</p>
+    <input type="text" name="username">
+    <p>Password</p>
+    <input type="password" name="password">
+    <p></p>
+    <input type="submit" value="Sign In">
+</form>
+{% endblock %}

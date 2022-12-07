@@ -28,6 +28,12 @@
                 <li><a href="/p/upload.html"><b>Upload</b></a></li>
                 <li><a href="/p/sketches.html"><b>View</b></a></li>
                 <li><a href="/p/draw.html"><b>Draw</b></a></li>
+                {% if user is none %}
+                <li><a href="/signup"><b>Sign Up</b></a></li>
+                <li><a href="/signin"><b>Sign In</b></a></li>
+                {% else %}
+                <li><a href="/signout"><b>Sign Out</b></a></li>
+                {% endif %}
                 <li><a href="mailto:ethan.rubenstein@pitt.edu;anirudhiyer@pitt.edu;acb198@pitt.edu;aaa240@pitt.edu" id="contact"><b>Contact</b></a></li>
             </ul>
         </nav>
@@ -44,6 +50,12 @@
                     <li><a href="/p/upload.html"><b>&nbspUpload&nbsp</b></a></li>
                     <li><a href="/p/sketches.html"><b>&nbspView&nbsp</b></a></li>
                     <li><a href="/p/draw.html"><b>&nbspDraw&nbsp</b></a></li>
+                    {% if user is none %}
+                    <li><a href="/signup"><b>&nbspSign Up&nbsp</b></a></li>
+                    <li><a href="/signin"><b>&nbspSign In&nbsp</b></a></li>
+                    {% else %}
+                    <li><a href="/signout"><b>&nbspSign Out&nbsp</b></a></li>
+                    {% endif %}
             </div>
         </nav>
     </div>
