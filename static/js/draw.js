@@ -161,7 +161,7 @@ if (submit) {
         params = {
             user: userNameParam,
             url: sketchurl,
-            tags: tagList
+            tags: tagString
         }
 
         fetch('/submit/confirm',  {
