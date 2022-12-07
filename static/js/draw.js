@@ -140,6 +140,14 @@ document.getElementById("canvas").addEventListener("mousemove", function(e) {
     2. Make Fetch call
     3. Make route handler to store image
 */
+// var userName = '';
+// fetch('/get/username', {
+//     method: 'POST'
+// })
+//  .then((response) => response.text())
+//  .then((response) => {
+//     userName = response;
+//  })
 
 var submit = document.getElementById('save-button');
 
@@ -173,7 +181,6 @@ if (submit) {
             //     message = response.toString()
             // }
             var message = response;
-            console.log(message);
             window.location = "/submit/redirConfirm"+message;
           })
           .catch(e => {
