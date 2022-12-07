@@ -171,7 +171,7 @@ if (submit) {
         })
           .then((response) => response.text())
           .then((response) => {
-            // console.log(response.type);
+            console.log(response);
             // if (typeof(response) === 'object' && response !== null) {
             //     message = response.toString()
             // }
@@ -197,6 +197,7 @@ function getUserName() {
         console.log("Test")
         console.log(localStorage.getItem('currentUserName'))
      })
+     return userName
 }
 
 async function storeSketchAsImage() {
