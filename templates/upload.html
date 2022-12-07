@@ -4,7 +4,10 @@
 {% block content %}
 
 <form method = "POST" enctype="multipart/form-data" action="/upload/confirm">
-    <input type="file" name="" id="">
+    <p>Select a File:</p>
+    <input type="file" name="file" id="">
+    <p>Give it a Unique Name</p>
+    <input type="text" name="filename">
     <input type="submit" value="Submit">
 </form>
 
