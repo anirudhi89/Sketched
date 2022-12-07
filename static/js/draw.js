@@ -141,23 +141,11 @@ document.getElementById("canvas").addEventListener("mousemove", function(e) {
     3. Make route handler to store image
 */
 
-var uniqueId = 0;
-const output = async function() {
-    uniqueId = await biri();
-    console.log(uniqueId);
-}
-//AUTHENTICATION
-//DEMO PURPOSES
-window.addEventListener('load', (e) => {
-    localStorage.setItem("tempID", uniqueId);
-})
-
 var submit = document.getElementById('save-button');
 
 if (submit) {
     submit.addEventListener('click', async e => {
         let sketchurl = await storeSketchAsImage()
-        var userid = localStorage.getItem('tempID')
         var params;
         var tagString = "";
         tagList.forEach((x, i) => {
@@ -168,18 +156,9 @@ if (submit) {
                 tagString += ` , ${x}`
             }
           });
-        if (userid != null) {
-            params = {
-                id: userid,
-                url: sketchurl,
-                tags: tagString
-            }
-        }
-        else {
-            params = {
-                url: sketchurl,
-                tags: tagList
-            }
+        params = {
+            url: sketchurl,
+            tags: tagList
         }
 
         fetch('/submit/confirm',  {
