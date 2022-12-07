@@ -41,10 +41,12 @@ def upload_confirmation():
     return flask.render_template("confirm.html", value = "Upload Received!", url = blob.public_url)
     # return flask.render_template("confirm.html", value = "Upload Received!")
 
-@app.route('/get/username')
+@app.route('/get/username', methods=['GET'])
 def get_username():
     if (flask.session.get('user') != None):
         return flask.session.get('user')
+    else:
+        return "Error"
 
 @app.route('/p/<requested_page>')
 def templater(requested_page):

@@ -144,7 +144,8 @@ document.getElementById("canvas").addEventListener("mousemove", function(e) {
 var userName = '';
 if (localStorage.getItem('currentUserName') === null) {
     fetch('/get/username', {
-        method: 'GET'
+        method: 'GET',
+        headers: {'Content-Type': 'application/json'},
     })
      .then((response) => response.text())
      .then((response) => {
