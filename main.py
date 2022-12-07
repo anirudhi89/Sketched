@@ -16,7 +16,7 @@ USERS_TYPE = "Users"
 
 @app.context_processor
 def inject_user():
-    return { "user": flask.session["user"] }
+    return { "user": flask.session.get('user') }
 
 @app.route('/')
 @app.route('/index.html')
