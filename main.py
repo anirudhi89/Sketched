@@ -27,7 +27,8 @@ def root():
 @app.route('/upload/confirm', methods = ["POST"])
 def upload_confirmation():
     uploaded_file = flask.request.files.get('file')
-    tagsList = uploaded_file.tags
+    filename = flask.request.form.get('filename')
+    tagsList = flask.request.form.get('tags')
     user = 'TestUserName'
     content_type = uploaded_file.content_type
     gcs_client = storage.Client()
