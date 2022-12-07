@@ -43,7 +43,7 @@ def upload_confirmation():
 
 @app.route('/p/<requested_page>')
 def templater(requested_page):
-    print(flask.session["user"])
+    print(flask.session.get('user'))
     return flask.render_template(requested_page)
 
 @app.route('/submit/confirm', methods=['POST'])
