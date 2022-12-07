@@ -141,7 +141,7 @@ document.getElementById("canvas").addEventListener("mousemove", function(e) {
     3. Make route handler to store image
 */
 //COMMENTED OUT UNTIL USERNAME PATH WORKS
-var userName;
+var userName = '';
 if (localStorage.getItem('currentUserName') === null) {
     fetch('/get/username', {
         method: 'GET'

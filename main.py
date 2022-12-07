@@ -43,7 +43,8 @@ def upload_confirmation():
 
 @app.route('/get/username')
 def get_username():
-    return flask.session.get('user')
+    if (flask.session.get('user') != None):
+        return flask.session.get('user')
 
 @app.route('/p/<requested_page>')
 def templater(requested_page):
