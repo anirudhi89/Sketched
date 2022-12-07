@@ -149,6 +149,8 @@ if (localStorage.getItem('currentUserName') === null) {
     })
      .then((response) => response.text())
      .then((response) => {
+        console.log("r")
+        console.log(response)
         userName = response;
         localStorage.setItem('currentUserName', userName)
         console.log(localStorage.getItem('currentUserName'))
