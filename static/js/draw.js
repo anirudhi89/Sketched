@@ -141,21 +141,23 @@ document.getElementById("canvas").addEventListener("mousemove", function(e) {
     3. Make route handler to store image
 */
 //COMMENTED OUT UNTIL USERNAME PATH WORKS
-// var userName;
-// if (localStorage.getItem('currentUserName') === null) {
-//     fetch('/get/username', {
-//         method: 'POST'
-//     })
-//      .then((response) => response.text())
-//      .then((response) => {
-//         userName = response;
-//         localStorage.setItem('currentUserName', userName)
-//      })
-// }
+var userName;
+if (localStorage.getItem('currentUserName') === null) {
+    fetch('/get/username', {
+        method: 'POST'
+    })
+     .then((response) => response.text())
+     .then((response) => {
+        userName = response;
+        localStorage.setItem('currentUserName', userName)
+        console.log(localStorage.getItem('currentUserName'))
 
-// else {
-//     userName = localStorage.getItem('currentUserName');
-// }
+     })
+}
+else {
+    userName = localStorage.getItem('currentUserName');
+    console.log(localStorage.getItem('currentUserName'))
+}
 
 
 var submit = document.getElementById('save-button');
