@@ -141,33 +141,13 @@ document.getElementById("canvas").addEventListener("mousemove", function(e) {
     3. Make route handler to store image
 */
 //COMMENTED OUT UNTIL USERNAME PATH WORKS
-var userName = '';
-if (localStorage.getItem('currentUserName') === null) {
-    fetch('/get/username', {
-        method: 'GET',
-        headers: {'Content-Type': 'application/json'},
-    })
-     .then((response) => response.text())
-     .then((response) => {
-        console.log("r")
-        console.log(response)
-        userName = response;
-        localStorage.setItem('currentUserName', userName)
-        console.log(localStorage.getItem('currentUserName'))
-
-     })
-}
-else {
-    userName = localStorage.getItem('currentUserName');
-    console.log(localStorage.getItem('currentUserName'))
-}
-
 
 var submit = document.getElementById('save-button');
 
 if (submit) {
     submit.addEventListener('click', async e => {
         let sketchurl = await storeSketchAsImage()
+        let userNameParam = getUserName();
         var params;
         var tagString = "";
         tagList.forEach((x, i) => {
@@ -179,6 +159,7 @@ if (submit) {
             }
           });
         params = {
+            user: userNameParam,
             url: sketchurl,
             tags: tagList
         }
@@ -201,6 +182,21 @@ if (submit) {
             console.log(e);
           })
     });
+}
+
+function getUserName() {
+    var userName = '';
+    fetch('/get/username', {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json'},
+    })
+     .then((response) => response.text())
+     .then((response) => {
+        userName = response;
+        localStorage.setItem('currentUserName', userName)
+        console.log("Test")
+        console.log(localStorage.getItem('currentUserName'))
+     })
 }
 
 async function storeSketchAsImage() {

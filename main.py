@@ -57,6 +57,8 @@ def templater(requested_page):
 def submit_confirm():
     request_json = request.get_json(force=True)
     url = request_json.get("url")
+    user = request_json.get("user")
+    # print("Registered under" + user)
     tags = request_json.get("tags")
     str = "Success! Image Uploaded"
     tags.replace('undefined', '')
@@ -64,6 +66,8 @@ def submit_confirm():
         if ((tags.strip() != "") or (tags.strip() != None) or (tags.strip().isspace())):
             str = "Success! Image Uploaded. Your image was tagged as: "
             str += tags
+            str += ". The username was "
+            str += user
     if url != None:
         # kind = "StickyNote"
         # name = "sticky"+ random.randint(0, 200)
