@@ -27,11 +27,15 @@ def root():
 @app.route('/upload/confirm', methods = ["POST"])
 def upload_confirmation():
     uploaded_file = flask.request.files.get('file')
+    tagsList = uploaded_file
+    user = 'TestUserName'
     content_type = uploaded_file.content_type
     gcs_client = storage.Client()
     storage_bucket = gcs_client.get_bucket('sketched-bucket')
     blob = storage_bucket.blob(uploaded_file.filename)
     blob.upload_from_string(uploaded_file.read(), content_type=content_type)
+    keyvaluetags = { username : user, tags : tagsList }
+    blob.metadata = keyvaluetags
     return flask.render_template("confirm.html", value = "Upload Received!", url = blob.public_url)
     # return flask.render_template("confirm.html", value = "Upload Received!")
 
