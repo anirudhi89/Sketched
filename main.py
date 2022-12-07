@@ -33,7 +33,7 @@ def upload_confirmation():
     content_type = uploaded_file.content_type
     gcs_client = storage.Client()
     storage_bucket = gcs_client.get_bucket('sketched-bucket')
-    blob = storage_bucket.blob(uploaded_file.filename)
+    blob = storage_bucket.blob(filename)
     blob.upload_from_string(uploaded_file.read(), content_type=content_type)
     keyvaluetags = { 'username' : user, 'tags' : tagsList }
     blob.metadata = keyvaluetags
