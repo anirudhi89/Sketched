@@ -147,7 +147,7 @@ var submit = document.getElementById('save-button');
 if (submit) {
     submit.addEventListener('click', async e => {
         let sketchurl = await storeSketchAsImage()
-        let userNameParam = getUserName();
+        let userNameParam = await getUserName();
         var params;
         var tagString = "";
         tagList.forEach((x, i) => {
