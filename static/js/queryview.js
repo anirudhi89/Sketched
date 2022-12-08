@@ -1,7 +1,4 @@
 //NOT LINKED TO HTML YET - KEEP IT THIS WAY
-// document.onload((e) =>  {
-//     //DEMO PURPOSES
-//     localStorage.setItem("tempHash", 1014404);
 
 //     //actual:f
     // if (localStorage.getItem("tempHash") != null) {
@@ -16,15 +13,18 @@
 //     }
 // })
 
-//post a request, get all sketches from user
-// fetch('/get/sketches', {
-//     method: 'POST', 
-//     body : JSON.parse(params)
-// })
-// .then((response) =>  response)
+//post a request, get all sketches from us
+async function getIMGs() {
+    return await fetch('/get/images');
+  }
+  getIMGs().then(response => {
+    console.log(response)
+    var arr = [] 
+    arr = response[link]; // => 'Page not found'
+  });
 
 function generate() {
-    arr = [4]
+    var arr = [4]
     const tbl = document.createElement("table");
     const tblBody = document.createElement("tbody");
     const location = document.getElementById('test')

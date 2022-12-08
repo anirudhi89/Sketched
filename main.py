@@ -1,6 +1,7 @@
 import hashlib
 import flask
 from flask import request
+import json
 from google.cloud import datastore
 from google.cloud import storage
 
@@ -29,7 +30,8 @@ def upload_confirmation():
     uploaded_file = flask.request.files.get('file')
     filename = flask.request.form.get('filename')
     tagsList = flask.request.form.get('tags')
-    user = 'TestUserName'
+    if (flask.session.get('user') != None):
+        user = flask.session.get('user')
     content_type = uploaded_file.content_type
     gcs_client = storage.Client()
     storage_bucket = gcs_client.get_bucket('sketched-bucket')
@@ -60,7 +62,18 @@ def draw_upload():
     blob.patch()
     return flask.render_template("confirm.html", value = "Upload Received!", url = blob.public_url)
 
-
+@app.route('/get/images', methods=['GET'])
+def get_images():
+    client = storage.Client()
+    bucket = client.bucket("sketched-bucket")
+    if (flask.session.get('user') != None):
+        user = flask.session.get('user')
+    blobs = bucket.list_blobs().filter(blob.metadata.get('username') == user)
+    result = {}
+    for blob in blobs:
+        arr = []
+        result[link] = arr.append(blob.public_url)
+    return json.dups(result)
 
 @app.route('/get/username', methods=['GET'])
 def get_username():
