@@ -68,7 +68,7 @@ def get_images():
     bucket = client.bucket("sketched-bucket")
     if (flask.session.get('user') != None):
         user = flask.session.get('user')
-    blobs = bucket.list_blobs().filter(blob.metadata.get('username') == user)
+    blobs = bucket.list_blobs(filter=(blob.metadata.get('username') == user))
     result = {}
     for blob in blobs:
         arr = []
