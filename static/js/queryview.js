@@ -20,8 +20,7 @@ async function getIMGs() {
   getIMGs().then(response => response.text())
   .then(response => {
     console.log(response)
-    var arr = [] 
-    arr = response[link]; // => 'Page not found'
+     // => 'Page not found'
   });
 
 function generate() {

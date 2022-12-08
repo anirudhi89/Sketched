@@ -73,7 +73,7 @@ def get_images():
     for blob in blobs:
         arr = []
         result[link] = arr.append(blob.public_url)
-    return json.dups(result)
+    return json.dumps(result)
 
 @app.route('/get/username', methods=['GET'])
 def get_username():
