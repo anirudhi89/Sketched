@@ -184,8 +184,8 @@ if (submit) {
     });
 }
 
+var userName = '';
 async function getUserName() {
-    var userName = '';
     await fetch('/get/username', {
         method: 'GET',
         headers: {'Content-Type': 'application/json'},
@@ -196,7 +196,7 @@ async function getUserName() {
         localStorage.setItem('currentUserName', userName)
         console.log("Test")
         console.log(localStorage.getItem('currentUserName'))
-        return userName;
+        return auserName;
      })
      return userName;
 }
