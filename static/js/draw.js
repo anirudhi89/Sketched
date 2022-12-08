@@ -184,9 +184,9 @@ if (submit) {
     });
 }
 
-function getUserName() {
+async function getUserName() {
     var userName = '';
-    fetch('/get/username', {
+    await fetch('/get/username', {
         method: 'GET',
         headers: {'Content-Type': 'application/json'},
     })
@@ -196,8 +196,9 @@ function getUserName() {
         localStorage.setItem('currentUserName', userName)
         console.log("Test")
         console.log(localStorage.getItem('currentUserName'))
+        return userName;
      })
-     return userName
+     return userName;
 }
 
 async function storeSketchAsImage() {
