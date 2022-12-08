@@ -237,6 +237,6 @@ async function storeSketchAsImage() {
 async function storeAsImg() {
     let imgBlob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
     let formData = new FormData();
-    formData.append("image", imageBlob, "image.png");
+    formData.append("image", imgBlob, "image.png");
     return formData;
 }
