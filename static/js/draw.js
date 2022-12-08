@@ -196,7 +196,7 @@ async function getUserName() {
         localStorage.setItem('currentUserName', userName)
         console.log("Test")
         console.log(localStorage.getItem('currentUserName'))
-        return auserName;
+        return userName;
      })
      return userName;
 }
