@@ -70,12 +70,18 @@ def get_images():
         user = flask.session.get('user')
     querystring = "metadata.username:"
     querystring += user
-    blobs = bucket.list_blobs(filter=querystring)
+# Query blobs with the filter() method 
+    blobs = bucket.list_blobs().filter(filtermethod)
     result = {}
     for blob in blobs:
         arr = []
         result[link] = arr.append(blob.public_url)
     return json.dumps(result)
+
+
+def filtermethod(blob):
+    return blob.metadata.get("username") == "TestUserName"
+
 
 @app.route('/get/username', methods=['GET'])
 def get_username():
