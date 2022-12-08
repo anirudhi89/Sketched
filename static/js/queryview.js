@@ -17,7 +17,8 @@
 async function getIMGs() {
     return await fetch('/get/images');
   }
-  getIMGs().then(response => {
+  getIMGs().then(response => response.text())
+  .then(response => {
     console.log(response)
     var arr = [] 
     arr = response[link]; // => 'Page not found'
