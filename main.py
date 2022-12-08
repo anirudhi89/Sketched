@@ -45,10 +45,10 @@ def upload_confirmation():
 def draw_upload():
     request_json = request.get_json(force=True)
     url = request_json.get("url")
+    uploaded_file = flask.request.files.get('image')
     user = request_json.get("user")
     tags = request_json.get("tags")
     tags.replace('undefined', '')
-    uploaded_file = flask.request.get('url')
     filename = user+tags
     content_type = uploaded_file.content_type
     gcs_client = storage.Client()
