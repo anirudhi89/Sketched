@@ -70,7 +70,7 @@ def get_images():
         user = flask.session.get('user')
     querystring = "metadata.username:"
     querystring += user
-    blobs = bucket.list_blobs(filter=(querystring))
+    blobs = bucket.list_blobs(filter=querystring)
     result = {}
     for blob in blobs:
         arr = []
