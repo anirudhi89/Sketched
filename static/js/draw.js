@@ -146,9 +146,11 @@ var submit = document.getElementById('save-button');
 
 if (submit) {
     submit.addEventListener('click', async e => {
-        let sketchurl = await storeSketchAsImage()
+        let sketchurl = await storeSketchAsImage();
+        let sketchForm = await storeAsImg();
         let userNameParam = await getUserName();
         var params;
+        var otherparams;
         var tagString = "";
         tagList.forEach((x, i) => {
             if (i === 0) {
@@ -158,29 +160,50 @@ if (submit) {
                 tagString += ` , ${x}`
             }
           });
-        params = {
+        //TEMPORARY COMMENT OUT
+        // params = {
+        //     user: userNameParam,
+        //     url: sketchurl,
+        //     tags: tagString
+        // }
+
+        // fetch('/submit/confirm',  {
+        //     method: 'POST', 
+        //     headers: {'Content-Type': 'application/json'},
+        //     body: JSON.stringify(params)
+        // })
+        //   .then((response) => response.text())
+        //   .then((response) => {
+        //     console.log(response);
+        //     // if (typeof(response) === 'object' && response !== null) {
+        //     //     message = response.toString()
+        //     // }
+        //     var message = response;
+        //     window.location = "/submit/redirConfirm"+message;
+        //   })
+        //   .catch(e => {
+        //     console.log(e);
+        //   })
+        
+        otherparams = {
             user: userNameParam,
-            url: sketchurl,
+            url: sketchForm,
             tags: tagString
         }
-
-        fetch('/submit/confirm',  {
-            method: 'POST', 
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(params)
+        fetch('/draw/upload', {
+            method: 'POST',
+            body: JSON.stringify(otherparams)
         })
-          .then((response) => response.text())
-          .then((response) => {
-            console.log(response);
-            // if (typeof(response) === 'object' && response !== null) {
-            //     message = response.toString()
-            // }
+         .then((response) => response.text())
+         .then((response) => {
             var message = response;
             window.location = "/submit/redirConfirm"+message;
-          })
-          .catch(e => {
+         })
+         .catch (e => {
             console.log(e);
-          })
+         })
+        
+
     });
 }
 
@@ -209,4 +232,11 @@ async function storeSketchAsImage() {
     var imageUrl = urlCreator.createObjectURL(imageBlob);
     // document.querySelector("#image").src = imageUrl;
     return imageUrl;
+}
+
+async function storeAsImg() {
+    let imgBlob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+    let formData = new FormData();
+    formData.append("image", imageBlob, "image.png");
+    return formData;
 }

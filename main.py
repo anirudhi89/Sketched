@@ -41,6 +41,27 @@ def upload_confirmation():
     return flask.render_template("confirm.html", value = "Upload Received!", url = blob.public_url)
     # return flask.render_template("confirm.html", value = "Upload Received!")
 
+@app.route('/draw/upload', methods=["POST"])
+def draw_upload():
+    request_json = request.get_json(force=True)
+    url = request_json.get("url")
+    user = request_json.get("user")
+    tags = request_json.get("tags")
+    tags.replace('undefined', '')
+    uploaded_file = flask.request.get('url')
+    filename = user+tags
+    content_type = uploaded_file.content_type
+    gcs_client = storage.Client()
+    storage_bucket = gcs_client.get_bucket('sketched-bucket')
+    blob = storage_bucket.blob(filename)
+    blob.upload_from_string(uploaded_file.read(), content_type=content_type)
+    keyvaluetags = { 'username' : user, 'tags' : tags }
+    blob.metadata = keyvaluetags
+    blob.patch()
+    return flask.render_template("confirm.html", value = "Upload Received!", url = blob.public_url)
+
+
+
 @app.route('/get/username', methods=['GET'])
 def get_username():
     if (flask.session.get('user') != None):
