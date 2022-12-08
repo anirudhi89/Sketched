@@ -193,7 +193,8 @@ if (submit) {
 
         fetch('/draw/upload', {
             method: 'POST',
-            body: sketchForm
+            body: sketchForm,
+            headers: {'Content-Type': 'multipart/form-data'}
         })
          .then((response) => response.text())
          .then((response) => {
