@@ -190,9 +190,10 @@ if (submit) {
             url: sketchForm,
             tags: tagString
         }
+
         fetch('/draw/upload', {
             method: 'POST',
-            body: JSON.stringify(otherparams)
+            body: sketchForm
         })
          .then((response) => response.text())
          .then((response) => {
@@ -238,5 +239,17 @@ async function storeAsImg() {
     let imgBlob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
     let formData = new FormData();
     formData.append("image", imgBlob, "image.png");
+    var tagsStrings = '';
+    tagList.forEach((x, i) => {
+        if (i === 0) {
+            tagsStrings = `${x}`
+        }
+        else {
+            tagsStrings += ` , ${x}`
+        }
+      });
+    formData.append("tags", tagsStrings)
+    let getuser = await getUserName();
+    formData.append("user", getuser)
     return formData;
 }
