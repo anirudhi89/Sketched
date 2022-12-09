@@ -39,7 +39,7 @@ window.onload = async function() {
           .then(response => response.text())
           .then(response => { arr = response; });
     }
-    arr = await getImages().then(() => console.log("test"))
+    getImages().then((reponse) => arr = response)
     console.log(arr)
     const tbl = document.createElement("table");
     const tblBody = document.createElement("tbody");
