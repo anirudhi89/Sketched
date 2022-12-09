@@ -39,7 +39,7 @@ window.onload = async function() {
             // => 'Page not found'
         });
     }
-    arr = await getImages();
+    arr = await getImages().then(response => arr = response);
     console.log(arr)
     const tbl = document.createElement("table");
     const tblBody = document.createElement("tbody");
