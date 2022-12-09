@@ -1,10 +1,12 @@
 {% extends '_base.html' %}
 {% block title %}Sketched | Sign Up {% endblock %}
 {% block content %}
-<h3>Sign Up</h3>
+
 {% for error in errors %}
     <p>{{ error }}</p>
 {% endfor %}
+<div class = "upload-form-wrapper">
+    <h3 class = "upload-title">Sign Up</h3>
 <form method="post" action="/register">
     <p>Username</p>
     <input class="upload-form" type="text" name="username">
@@ -13,7 +15,7 @@
     <p>Confirm Password</p>
     <input class="upload-form" type="password" name="confirmpassword">
     <p></p>
-    <input type="submit" value="Sign Up">
+    <input type="submit" class = "submit-button" value="Sign Up">
 </form>
-
+</div>
 {% endblock %}

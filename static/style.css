@@ -590,5 +590,21 @@ body {
 table {
   width: 100%;
 }
-
+.upload-form-wrapper{
+    margin-left:auto;
+    margin-right:auto;
+}
+.upload-title{
+    text-align:center;
+    margin-top:10vh;
+}
+#title-5{
+    text-align:center;
+}
+.submit-button{
+    margin-top:1vh;
+    font-family:poppins;
+    border-radius:8px;
+    background-color: #ffae44;
+}
 /*============================================================*/
