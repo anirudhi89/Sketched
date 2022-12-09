@@ -37,10 +37,7 @@ window.onload = async function() {
           .then(response => response.text())
           .then(response => { arr = response; });
     }
-    async function storeArray() {
-        await getImages().then(response => arr = response);
-    }
-    storeArray()
+    arr = await getImages()
     console.log(arr)
     const tbl = document.createElement("table");
     const tblBody = document.createElement("tbody");
