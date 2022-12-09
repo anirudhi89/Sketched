@@ -31,7 +31,7 @@ window.onload = function() {
 
     const tbl = document.createElement("table");
     const tblBody = document.createElement("tbody");
-    const location = document.getElementById('test')
+    const location = document.getElementById('temp')
 
     var rows;
     var cols;
