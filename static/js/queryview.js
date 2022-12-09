@@ -45,7 +45,6 @@ window.onload = async function() {
 
     var rows;
     var cols;
-    const imgURL = 'https://i.etsystatic.com/18883082/r/il/24ac06/2116869557/il_570xN.2116869557_s9ue.jpg'
     if (arr.length > 6) {
         cols = 3;
         rows = Math.ceil(arr.length/3);
@@ -57,14 +56,16 @@ window.onload = async function() {
     else if (arr.length === 4) {
         rows = 2;
         cols = 2;
-    }       
-        
+    }
+    var counter = 1;
     for (let j = 0; j < rows; j++) {
         const rowHTML = document.createElement('tr')
         for (let k = 0; k < cols; k++) {
             const td = document.createElement("td");
             const cellImg = document.createElement('img');
-            cellImg.src = arr;
+            cellImg.id = counter;
+            cellImg.src = ''
+            counter++
             td.appendChild(cellImg);
             rowHTML.appendChild(td);
         }
