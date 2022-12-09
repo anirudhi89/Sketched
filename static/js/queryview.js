@@ -24,6 +24,7 @@ window.onload = async function() {
         })
          .then(response => response.text())
          .then(response => {
+            arr = response
             return response
          })
     }
@@ -33,13 +34,12 @@ window.onload = async function() {
             headers: {'Content-Type': 'application/json'},
         })
           .then(response => response.text())
-          .then(response => {
-            console.log(response)
-            arr = response;
-            // => 'Page not found'
-        });
+          .then(response => { arr = response; });
     }
-    arr = await getImages().then(response => arr = response);
+    async function storeArray() {
+        await getImages().then(response => arr = response);
+    }
+    storeArray()
     console.log(arr)
     const tbl = document.createElement("table");
     const tblBody = document.createElement("tbody");
