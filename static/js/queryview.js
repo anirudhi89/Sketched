@@ -17,17 +17,29 @@
 window.onload = function() {
     var arr = []
     //post a request, get all sketches from us
-
-
-    async function getIMGs() {
-        return await fetch('/get/images');
+    async function getImages() {
+        await fetch('/get/images', {
+            method: 'GET',
+            headers: {'Content-Type' : 'application.json'}
+        })
+         .then(response => response.text())
+         .then(response => {
+            return response
+         })
     }
-    getIMGs().then(response => response.text())
-    .then(response => {
-        console.log(response)
-        arr = response;
-        // => 'Page not found'
-    });
+    arr = getImages();
+    async function getIMGs() {
+        await fetch('/get/images', {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json'},
+        })
+          .then(response => response.text())
+          .then(response => {
+            console.log(response)
+            arr = response;
+            // => 'Page not found'
+        });
+    }
 
     const tbl = document.createElement("table");
     const tblBody = document.createElement("tbody");
@@ -68,4 +80,5 @@ window.onload = function() {
         var imgtemp = document.getElementById(i.toString());
         imgtemp.src = arr[i-1];
     }
+    
 }
