@@ -38,7 +38,6 @@ window.onload = function() {
 
     tbl.appendChild(tblBody);
     location.appendChild(tbl);
-    tbl.setAttribute("border", "2");
     location.setAttribute('height', '500px')
     location.setAttribute('width', '1500px')
 
