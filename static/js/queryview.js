@@ -18,15 +18,16 @@ window.onload = async function() {
     var arr = []
     //post a request, get all sketches from us
     async function getImages() {
+        var array = []
         await fetch('/get/images', {
             method: 'GET',
             headers: {'Content-Type' : 'application.json'}
         })
          .then(response => response.text())
          .then(response => {
-            arr = response
-            return response
+            array = response
          })
+         return array
     }
     async function getIMGs() {
         await fetch('/get/images', {
