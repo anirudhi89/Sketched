@@ -40,11 +40,11 @@ window.onload = async function() {
           .then(response => { arr = response; });
     }
     getImages().then((reponse) => arr = response)
-    console.log(arr)
+    await console.log(arr)
     const tbl = document.createElement("table");
     const tblBody = document.createElement("tbody");
     const location = document.getElementById('temp')
-
+    
     var rows;
     var cols;
     if (arr.length > 6) {
