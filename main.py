@@ -72,9 +72,10 @@ def get_images():
     querystring += user
     blobs = bucket.list_blobs()
     result = {}
+    arr = []
     for blob in blobs:
-        arr = []
-        arr.append(blob.public_url)
+        if blob.public_url:
+            arr.append(blob.public_url)
     return arr
 
 
