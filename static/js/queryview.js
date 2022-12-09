@@ -14,7 +14,7 @@
 // })
 
 
-window.onload = function() {
+window.onload = async function() {
     var arr = []
     //post a request, get all sketches from us
     async function getImages() {
@@ -27,7 +27,6 @@ window.onload = function() {
             return response
          })
     }
-    arr = getImages();
     async function getIMGs() {
         await fetch('/get/images', {
             method: 'GET',
@@ -40,7 +39,8 @@ window.onload = function() {
             // => 'Page not found'
         });
     }
-
+    arr = await getImages();
+    console.log(arr)
     const tbl = document.createElement("table");
     const tblBody = document.createElement("tbody");
     const location = document.getElementById('temp')
