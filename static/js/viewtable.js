@@ -1,5 +1,5 @@
 window.onload = function() {
-    var arr = ["https://storage.googleapis.com/sketched-bucket/helloworld","https://storage.googleapis.com/sketched-bucket/hisketch","https://storage.googleapis.com/sketched-bucket/testsketch","https://storage.googleapis.com/sketched-bucket/samplesketch"]
+    var arr = ["https://storage.googleapis.com/sketched-bucket/helloworld","https://storage.googleapis.com/sketched-bucket/hisketch","https://storage.googleapis.com/sketched-bucket/othersketch","https://storage.googleapis.com/sketched-bucket/samplesketch"]
     const tbl = document.createElement("table");
     const tblBody = document.createElement("tbody");
     const location = document.getElementById('temp')
