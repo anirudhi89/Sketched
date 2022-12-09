@@ -36,6 +36,9 @@ window.onload = function() {
     tbl.appendChild(tblBody);
     location.appendChild(tbl);
     tbl.setAttribute("border", "2");
+    location.setAttribute('height', '500px')
+    location.setAttribute('width', '1500px')
+
     for (let i = 1; i < arr.length + 1; i++) {
         var imgtemp = document.getElementById(i.toString());
         imgtemp.src = arr[i-1];
