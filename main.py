@@ -205,29 +205,3 @@ def hash_password(p):
 
 def get_client():
     return datastore.Client()
-
-def retrieve_item(id):
-    client = get_client()
-    key = client.key(ENTITY_TYPE, int(id))
-    return client.get(key)
-
-def update_item(item):
-    client = get_client()
-    client.put(item)
-
-def delete_item(id):
-    client = get_client()
-    key = client.key(ENTITY_TYPE, int(id))
-    client.delete(key)
-
-def get_things():
-    result = []
-    client = get_client()
-    query = client.query(kind=ENTITY_TYPE)
-    for entity in query.fetch():
-        result.append(entity)
-    return result
-
-
-
-    
